@@ -11,13 +11,14 @@ export default function PromptForm(props: Props) {
   const [value, setvalue] = useState("")
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
-    if(value == "")
-      return
-    getVariations(value).then((result) => {
-      props.setPrompt(value)
-      props.setPhrases(result.similar_phrases)
+    try{
+      getVariations(value).then((result) => {
+        props.setPrompt(value)
+        props.setPhrases(result.similar_phrases)
+      })
+    }catch(e){
+      console.error(e)
     }
-  )
   }
 
   return (

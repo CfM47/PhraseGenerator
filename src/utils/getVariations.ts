@@ -4,10 +4,12 @@ export type Variations = {
   similar_phrases: string[]
 }
 
-require('dotenv').config();
+
+const key = import.meta.env.VITE_OPENAI_API_KEY
 
 const openai = new OpenAI({
-  apiKey: process.env.OPEN_AI_API_KEY
+  apiKey: key,
+  dangerouslyAllowBrowser: true
 });
 
 export default async function getVariations(prompt: string) : Promise<Variations> {
