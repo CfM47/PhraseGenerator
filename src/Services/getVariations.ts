@@ -12,14 +12,14 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true
 });
 
-export default async function getVariations(prompt: string) : Promise<Variations> {
+export default async function getVariations(prompt = "Un dia vi una vaca vestida de uniforme") : Promise<Variations> {
   const completion = await openai.chat.completions.create({
     messages: [
       {
         role: "system",
         content: "You are a helpful assistant designed to output JSON.",
       },
-      { role: "user", content: `return ten similar phrases to '${prompt}'`},
+      { role: "user", content: `return ten similar phrases to '${prompt}' with key "similar_phrases"`},
     ],
     model: "gpt-3.5-turbo-0125",
     response_format: { type: "json_object" },

@@ -1,10 +1,11 @@
 import Button from "./Button"
-import getVariations from "../utils/getVariations"
+import getVariations from "../Services/getVariations"
 import { useState } from "react"
 
 type Props = {
   setPhrases : React.Dispatch<React.SetStateAction<string[]>>
   setPrompt : React.Dispatch<React.SetStateAction<string>>
+  setMessage: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function PromptForm(props: Props) {
@@ -20,15 +21,18 @@ export default function PromptForm(props: Props) {
         {
           props.setPrompt("")
           props.setPhrases([])
+          props.setMessage("An unexpected error ocurred. Try generating a new request in a few seconds")
         }
         props.setPrompt(value)
         props.setPhrases(result.similar_phrases)
+        props.setMessage("")
       }).finally(()=> setFetching(false))
     }catch(e){
       console.error(e)
       setFetching(false)
       props.setPrompt("")
       props.setPhrases([])
+      props.setMessage("An unexpected error ocurred. Try generating a new request in a few seconds")
     }
   }
 
