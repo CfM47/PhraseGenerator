@@ -9,15 +9,26 @@ type Props = {
 
 export default function PromptForm(props: Props) {
   const [value, setvalue] = useState("")
+  const [fetching, setFetching] = useState(false)
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
     try{
+      setFetching(true)
       getVariations(value).then((result) => {
+        if(result == undefined)
+        {
+          props.setPrompt("")
+          props.setPhrases([])
+        }
         props.setPrompt(value)
         props.setPhrases(result.similar_phrases)
-      })
+      }).finally(()=> setFetching(false))
     }catch(e){
       console.error(e)
+      setFetching(false)
+      props.setPrompt("")
+      props.setPhrases([])
     }
   }
 
@@ -31,7 +42,7 @@ export default function PromptForm(props: Props) {
           className='flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-color1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full'
           placeholder='Type your phrase here'>
         </input>
-        <Button text="Generate"/>
+        <Button text="Generate" fetching={fetching}/>
       </form>
     </div>
   )

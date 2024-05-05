@@ -12,7 +12,7 @@ export default function Generate({}: Props) {
 
 
   return (
-    <div>
+    <div className="md:max-w-[30%]">
       <Titles></Titles>
       <PromptForm setPhrases={setphrases} setPrompt={setPrompt}></PromptForm>
       <Results prompt={prompt} results={phrases}></Results>
