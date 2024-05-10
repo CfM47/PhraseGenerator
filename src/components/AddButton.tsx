@@ -4,9 +4,8 @@ import { MdFavoriteBorder } from "react-icons/md";
 
 type Props = {
   item: any
-  key: number
   add: (item : any) => void
-  remove: (index : number) => void
+  remove: (item : any) => void
 }
 
 export default function Button(props: Props) {
@@ -14,9 +13,12 @@ export default function Button(props: Props) {
 
   const handleClick = () => {
     if (isFavorite) 
-      props.remove(props.key)
-    else 
+      props.remove(props.item)
+    else {
       props.add(props.item)
+      console.log("se agrego el item")
+      console.log(localStorage.getItem('phrases'))
+    }
     
     setIsFavorite(!isFavorite)
   }

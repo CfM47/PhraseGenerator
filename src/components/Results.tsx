@@ -1,5 +1,5 @@
-import { useFavoritesStore } from "../stores/favoritePhrases"
-import AddToFavorites from "./AddToFavorites"
+import AddToFavorites from "./AddButton"
+import { AddPhrase, RemovePhrase } from "../utils/HandleFavorite"
 
 type Props = {
   prompt: string
@@ -8,7 +8,6 @@ type Props = {
 }
 
 export default function Container(props: Props) {
-  const [addFavorites, removeFavorites] = useFavoritesStore((state) => [state.add, state.remove])
   return (
     <>
       {
@@ -19,7 +18,7 @@ export default function Container(props: Props) {
             {props.results.map((x, i)=>
               <div className="inline-flex items-end w-full">
                 <li key={i} className='font-inter text-sm text-color1 dark:text-color1-dark py-1 flex-1'>{x}</li>
-                <AddToFavorites add={addFavorites} remove={removeFavorites} key={i} item={x}></AddToFavorites>
+                <AddToFavorites add={AddPhrase} remove={RemovePhrase} key={i} item={x}></AddToFavorites>
               </div>
             )}
           </ul>
