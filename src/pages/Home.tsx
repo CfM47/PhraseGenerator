@@ -24,7 +24,7 @@ export default function Home({}: Props) {
       <div className="text-left mt-2">
         <LinkButtonLg link="/generate" text="Generate Now"></LinkButtonLg>
         {phrases.length === 0 ? <></> : <h2 className='font-inter text-color1 dark:text-color1-dark m-2'>Here's an example :</h2>}
-        <Results prompt={prompt} results={phrases}></Results>
+        <Results prompt={prompt} results={phrases} add={false}></Results>
       </div>
     </div>
   );

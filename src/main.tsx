@@ -6,6 +6,7 @@ import Root from './pages/Root.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
 import Home from './pages/Home.tsx';
 import Generate from './pages/Generate.tsx';
+import Favorites from "./pages/Favorites.tsx"
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/generate",
         element : <Generate></Generate>
+      },
+      {
+        path: "/favorites",
+        element : <Favorites></Favorites>
       }
     ]
   },
