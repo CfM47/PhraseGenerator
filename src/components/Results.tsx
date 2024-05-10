@@ -8,7 +8,7 @@ export default function Container(props: Props) {
     <>
       {
         props.results === undefined || props.results.length === 0? <></> :
-        <div className='bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 space-y-4 justify-start min-w-[90%] md:min-w-[30%] ml-3 mr-3'>
+        <div className='text-left bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 space-y-4 justify-start'>
           <h2 className='font-inter text-color1 dark:text-color1-dark'>Prompt :</h2>
           <p className='font-inter text-sm text-color1 dark:text-color1-dark'>{props.prompt}</p>
           <h2 className='font-inter text-color1 dark:text-color1-dark'>It's variations :</h2>

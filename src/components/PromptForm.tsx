@@ -37,7 +37,7 @@ export default function PromptForm(props: Props) {
   }
 
   return (
-    <div className='space-y-4 min-w-[90%] md:min-w-[30%] p-5 ml-3 mr-3'>
+    <div className='space-y-4'>
       <form className='space-y-2' onSubmit={handleSubmit}>
         <label className='font-inter text-color1 dark:text-color1-dark text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70' htmlFor='phrase'>Enter a phrase</label>
         <input id='phrase'

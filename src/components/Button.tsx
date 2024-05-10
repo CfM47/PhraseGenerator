@@ -1,6 +1,6 @@
 type Props = {
   text: string
-  fetching: boolean
+  fetching?: boolean
   onClick?: () => void
 }
 

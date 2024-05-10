@@ -1,8 +1,5 @@
 import OpenAI from "openai"
-
-export type Variations = {
-  similar_phrases: string[]
-}
+import { Variations } from "../Types/Variations";
 
 
 const key = import.meta.env.VITE_OPENAI_API_KEY
@@ -19,7 +16,7 @@ export default async function getVariations(prompt = "Un dia vi una vaca vestida
         role: "system",
         content: "You are a helpful assistant designed to output JSON.",
       },
-      { role: "user", content: `return ten similar phrases to '${prompt}' with key "similar_phrases"`},
+      { role: "user", content: `return '${prompt}' with key "prompt", and ten similar phrases to '${prompt}' with key "similar_phrases"`},
     ],
     model: "gpt-3.5-turbo-0125",
     response_format: { type: "json_object" },
