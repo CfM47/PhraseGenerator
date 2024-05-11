@@ -12,7 +12,7 @@ export default function Generate({}: Props) {
   const [message, setMessage] = useState("")
 
   return (
-    <div>
+    <div className="w-full flex flex-col gap-2">
       <PromptForm setPhrases={setphrases} setPrompt={setPrompt} setMessage={setMessage}></PromptForm>
       <MessageContainer message={message}></MessageContainer>
       <Results prompt={prompt} results={phrases} allowAdd={true}></Results>

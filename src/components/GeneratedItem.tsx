@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddPhrase, RemovePhrase } from "../utils/HandleFavorite";
 import AddButton from "./AddButton";
 
@@ -9,6 +9,11 @@ type Props = {
 
 export default function FavoriteItem(props: Props) {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    setIsFavorite(false)
+  }, [props.item])
+  
 
   return (
     <div className="inline-flex items-end w-full">
