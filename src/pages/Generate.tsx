@@ -15,7 +15,7 @@ export default function Generate({}: Props) {
     <div>
       <PromptForm setPhrases={setphrases} setPrompt={setPrompt} setMessage={setMessage}></PromptForm>
       <MessageContainer message={message}></MessageContainer>
-      <Results prompt={prompt} results={phrases}></Results>
+      <Results prompt={prompt} results={phrases} allowAdd={true}></Results>
     </div>
   );
 }
