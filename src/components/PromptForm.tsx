@@ -1,6 +1,7 @@
 import Button from "./Button"
 import getVariations from "../Services/getVariations"
 import { useState } from "react"
+import {useForm} from "react-hook-form"
 
 type Props = {
   setPhrases : React.Dispatch<React.SetStateAction<string[]>>
@@ -11,8 +12,9 @@ type Props = {
 export default function PromptForm(props: Props) {
   const [value, setvalue] = useState("")
   const [fetching, setFetching] = useState(false)
+  const {handleSubmit, register, formState: {errors}} = useForm()
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
     try{
       setFetching(true)
@@ -38,7 +40,7 @@ export default function PromptForm(props: Props) {
 
   return (
     <div className='space-y-4'>
-      <form className='space-y-2' onSubmit={handleSubmit}>
+      <form className='space-y-2' onSubmit={onSubmit}>
         <label className='font-inter text-color1 dark:text-color1-dark text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70' htmlFor='phrase'>Enter a phrase</label>
         <input id='phrase'
           value={value}
